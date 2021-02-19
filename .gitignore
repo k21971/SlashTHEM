@@ -1,5 +1,6 @@
 /local.mk
 /GNUmakefile
+/Makefile
 
 *.o
 *.d
@@ -14,6 +15,12 @@ dat/options
 dat/oracles
 dat/quest.dat
 dat/rumors
+dat/quest_levs
+dat/spec_levs
+dat/Makefile
+
+doc/Guidebook
+doc/Makefile
 
 include/date.h
 include/dgn_comp.h
@@ -22,9 +29,15 @@ include/lev_comp.h
 include/onames.h
 include/pm.h
 include/verinfo.h
+include/vis_tab.h
+
+src/*.h-t
 
 src/monstr.c
 src/slashthem
+src/vis_tab.c
+src/Makefile
+src/Sysunix
 
 util/dgn_comp
 util/dgn_lex.c
@@ -34,6 +47,8 @@ util/lev_comp
 util/lev_lex.c
 util/lev_yacc.c
 util/makedefs
+util/recover
+util/Makefile
 
 tags
 

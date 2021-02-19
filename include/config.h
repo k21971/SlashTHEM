@@ -535,7 +535,7 @@ typedef long glyph_t;
 /*#define UNDERGROUND_RIVERS */ /* 5lo: Wrapped these into a define, currently a bit buggy. */
 #define DUMP_LOG /* Dumplog support */
 
-#define DUMP_FN "/dgldir/userdata/%N/%n/slashthem/dumplog/%d.slth.txt"    /* Fixed dumpfile name */
+#define DUMP_FN "/dgldir/userdata/%N/%n/slashthem/dumplog/%t.slth.txt"    /* Fixed dumpfile name */
 
 #define DUMPMSGS 30
 

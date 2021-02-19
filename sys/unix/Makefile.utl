@@ -90,8 +90,8 @@
 # CFLAGS = -g -I../include
 
 CFLAGS = -g -O0 -fcommon
-CFLAGS += -I../include -Wno-format-overflow -DHACKDIR=\"/usr/games/lib/slashthemdir\"
-LFLAGS =
+CFLAGS += -I../include -Wno-format-overflow
+LFLAGS = -g
 
 LIBS =
  

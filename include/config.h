@@ -241,22 +241,20 @@
  *	compression.
  */
 
-#if 0 /* why bother? it's 2015 */
 #ifdef UNIX
 /* path and file name extension for compression program */
-# define COMPRESS "/usr/bin/compress" /* Lempel-Ziv compression */
-# define COMPRESS_EXTENSION ".Z"	     /* compress's extension */
+/* # define COMPRESS "/usr/bin/compress" */ /* Lempel-Ziv compression */
+/* # define COMPRESS_EXTENSION ".Z" */	     /* compress's extension */
 
 /* An example of one alternative you might want to use: */
 /* # define COMPRESS "/usr/local/bin/gzip" */   /* FSF gzip compression */
 /* # define COMPRESS_EXTENSION ".gz" */	     /* normal gzip extension */
 
-/* # define COMPRESS "/usr/bin/bzip2"	*//* bzip2 compression */
-/* # define COMPRESS_EXTENSION ".bz2"	*//* bzip2 extension */
+# define COMPRESS "/bin/gzip"	/* bzip2 compression */
+# define COMPRESS_EXTENSION ".gz"	/* bzip2 extension */
 #endif
 #ifndef COMPRESS
 # define INTERNAL_COMP	/* control use of NetHack's compression routines */
-#endif
 #endif
 
 /*
@@ -264,7 +262,7 @@
  *	a tar-like file, thus making a neater installation.  See *conf.h
  *	for detailed configuration.
  */
-/* #define DLB */             /* not supported on all platforms */
+#define DLB             /* not supported on all platforms */
 
 /*
  *	Defining INSURANCE slows down level changes, but allows games that
@@ -283,7 +281,7 @@
  * otherwise it will be the current directory.
  */
 # ifndef HACKDIR
-#  define HACKDIR "."
+#  define HACKDIR "/slashthem-0.9.5"
 # endif
 
 /*
@@ -526,9 +524,9 @@ typedef long glyph_t;
  * Enable any of these at your own risk -- there are almost certainly
  * bugs left here.
  */
-/* #define STATUS_COLORS */
+#define STATUS_COLORS
 
-/* #define EXTENDED_INFO */ /* 5lo: Show full information of monsters
+#define EXTENDED_INFO /* 5lo: Show full information of monsters
                                when using farlook */
 #define USER_DUNGEONCOLOR
 #define SORTLOOT	    /* 5lo: Sortloot patch */
@@ -537,11 +535,11 @@ typedef long glyph_t;
 /*#define UNDERGROUND_RIVERS */ /* 5lo: Wrapped these into a define, currently a bit buggy. */
 #define DUMP_LOG /* Dumplog support */
 
-/* #define DUMP_FN "/tmp/%n.nh" */    /* Fixed dumpfile name */
+#define DUMP_FN "/dgldir/userdata/%N/%n/slashthem/dumplog/%d.slth.txt"    /* Fixed dumpfile name */
 
-#define DUMPMSGS 20
+#define DUMPMSGS 30
 
-/*#define SIMPLE_MAIL */ /* dgamelaunch simple mail */
+#define SIMPLE_MAIL /* dgamelaunch simple mail */
 
 #define AUTO_OPEN	/* open doors by walking into them - Stefano Busti */
 /* #define NEPHI_PHOTOGRAPHY */ /* Nephi's photography patch */

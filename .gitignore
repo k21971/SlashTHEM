@@ -1,4 +1,3 @@
-/local.mk
 /GNUmakefile
 /Makefile
 
@@ -11,6 +10,8 @@ dat/data
 dat/dungeon
 dat/dungeon.pdf
 dat/nhdat
+dat/nhshare
+dat/nhushare
 dat/options
 dat/oracles
 dat/quest.dat

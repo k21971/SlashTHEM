@@ -14,7 +14,7 @@
 # MAKE = make
 
 # make NetHack
-PREFIX   = /usr
+PREFIX   = /opt/nethack/chroot
 GAME     = slashthem
 # GAME     = slashthem.prg
 GAMEUID  = games
@@ -40,15 +40,15 @@ VARDIRPERM  = 0755
 # These must agree with the definitions in unixconf.h
 
 # Defs. for non file areas support.
-GAMEDIR  = $(PREFIX)/games/lib/$(GAME)dir
+GAMEDIR  = $(PREFIX)/slashthem-0.9.5
 VARDIR = $(GAMEDIR)
 FILE_AREA_VAR = $(VARDIR)
 FILE_AREA_SAVE = $(VARDIR)/save
 FILE_AREA_SHARE = $(GAMEDIR)
 FILE_AREA_UNSHARE = $(GAMEDIR)
 FILE_AREA_DOC = $(GAMEDIR)
-FILE_AREA_BONES = $(FILE_AREA_VAR)
-FILE_AREA_LEVL = $(FILE_AREA_VAR)
+FILE_AREA_BONES = $(FILE_AREA_VAR)/bones
+FILE_AREA_LEVL = $(FILE_AREA_VAR)/level
 SHELLDIR = $(PREFIX)/bin
 
 # Defs. compatible with Linux's FSSTND 1.2

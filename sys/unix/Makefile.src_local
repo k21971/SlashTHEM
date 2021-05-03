@@ -144,7 +144,7 @@ SYSOBJ = ioctl.o unixmain.o unixtty.o unixunix.o unixres.o recover.o
 # flags for debugging:
 # CFLAGS = -g -I../include
 
-CFLAGS = -g -O0 -fcommon -I../include -Wno-format-overflow -DHACKDIR=\"/usr/games/lib/slashthemdir\"
+CFLAGS = -g3 -O0 -fcommon -I../include -Wno-format-overflow -DHACKDIR=\"/usr/games/lib/slashthemdir\"
 LFLAGS =
 
 # Only used for the Gnome interface.
@@ -195,8 +195,8 @@ WINGTKCFLAGS=`$(WINGTKCONFIG) --cflags`
 #
 # files for a straight tty port using no native windowing system
 WINTTYSRC = ../win/tty/getline.c ../win/tty/termcap.c ../win/tty/topl.c \
-	../win/tty/wintty.c 
-WINTTYOBJ = getline.o termcap.o topl.o wintty.o 
+	../win/tty/wintty.c
+WINTTYOBJ = getline.o termcap.o topl.o wintty.o
 #
 # files for an X11 port
 # (tile.c is included in the defn. for WINCSRC, below)

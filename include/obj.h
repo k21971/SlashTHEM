@@ -175,8 +175,7 @@ struct obj {
 			 objects[(otmp)->otyp].oc_skill <= P_SABER)
 #define is_pole(otmp)	(((otmp)->oclass == WEAPON_CLASS || \
 			(otmp)->oclass == TOOL_CLASS) && \
-			 (objects[(otmp)->otyp].oc_skill == P_POLEARMS || \
-			 objects[(otmp)->otyp].oc_skill == P_LANCE))
+			 (objects[(otmp)->otyp].oc_skill == P_POLEARMS))
 #define is_spear(otmp)	((otmp)->oclass == WEAPON_CLASS && \
 			 objects[(otmp)->otyp].oc_skill >= P_SPEAR && \
 			 objects[(otmp)->otyp].oc_skill <= P_JAVELIN)
@@ -227,7 +226,7 @@ struct obj {
 			(is_ammo(otmp) && (ltmp) && \
 			objects[(otmp)->otyp].oc_skill == -objects[(ltmp)->otyp].oc_skill && \
 			  objects[(otmp)->otyp].w_ammotyp == objects[(ltmp)->otyp].w_ammotyp)
-#define bimanual(otmp)	(((otmp)->oclass == WEAPON_CLASS || \
+#define bimanual(otmp)	(!Race_if(PM_GIANT) && ((otmp)->oclass == WEAPON_CLASS || \
 			  (otmp)->oclass == TOOL_CLASS) && \
 			 objects[(otmp)->otyp].oc_bimanual)
 

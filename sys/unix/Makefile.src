@@ -146,6 +146,7 @@ SYSOBJ = ioctl.o unixmain.o unixtty.o unixunix.o unixres.o recover.o
 
 CFLAGS = -g3 -O0 -fcommon -I../include -Wno-format-overflow
 CFLAGS += -DHACKDIR=\"/slashthem-0.9.5\"
+CFLAGS += -DPUBLIC_SERVER
 LFLAGS = -g3
 
 # Only used for the Gnome interface.

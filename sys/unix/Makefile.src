@@ -145,7 +145,7 @@ SYSOBJ = ioctl.o unixmain.o unixtty.o unixunix.o unixres.o recover.o
 # CFLAGS = -g -I../include
 
 CFLAGS = -g3 -O0 -fcommon -I../include -Wno-format-overflow
-CFLAGS += -DHACKDIR=\"/slashthem-0.9.5\"
+CFLAGS += -DHACKDIR=\"/slashthem-0.9.6\"
 CFLAGS += -DPUBLIC_SERVER
 LFLAGS = -g3
 

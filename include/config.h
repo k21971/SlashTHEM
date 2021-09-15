@@ -281,7 +281,7 @@
  * otherwise it will be the current directory.
  */
 # ifndef HACKDIR
-#  define HACKDIR "/slashthem-0.9.5"
+#  define HACKDIR "/slashthem-0.9.6"
 # endif
 
 /*

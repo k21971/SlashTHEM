@@ -187,6 +187,7 @@ struct instance_flags {
 #ifdef ITEMCAT
         boolean  like_swimming; /* category r - Items known to be Rustprone */
 #endif /* ITEMCAT */
+	boolean  debug_fuzzer;  /* fuzz testing */
 	boolean  cbreak;	/* in cbreak mode, rogue format */
 	boolean  DECgraphics;	/* use DEC VT-xxx extended character set */
 	boolean  echo;		/* 1 to echo characters */
@@ -311,6 +312,7 @@ struct instance_flags {
 	boolean wc2_wraptext;		/* wrap text */
 
 	boolean  cmdassist;	/* provide detailed assistance for some commands */
+	genericptr_t returning_missile; /* 'struct obj *'; Mjollnir, aklys, or lightsaber as jedi */
 	boolean	 obsolete;	/* obsolete options can point at this, it isn't used */
 	/* Items which belong in flags, but are here to allow save compatibility */
 	boolean  lootabc;	/* use "a/b/c" rather than "o/i/b" when looting */

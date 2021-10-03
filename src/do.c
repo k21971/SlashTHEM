@@ -137,6 +137,8 @@ dogive()
                   mon_nam(mtmp));
         } else {
             pline("%s seems confused, but thanks you anyway.", mon_nam(mtmp));
+            /* TODO: Shk should drop object onto floor for sale? */
+            subfrombill(otmp, shop_keeper(*u.ushops));
         }
     } else if (otmp->unpaid && inside_shop(u.ux, u.uy)) {
         /* refine this later */
@@ -1098,6 +1100,8 @@ doup()
 		return(1);
 	}
 	if(ledger_no(&u.uz) == 1) {
+		if (iflags.debug_fuzzer)
+			return 0;
 		if (yn("Beware, there will be no return! Still climb?") != 'y')
 			return(0);
 	}
@@ -2028,6 +2032,13 @@ register struct obj *obj;
     }
     if (flags.verbose)
         You("give %s to %s.", doname(obj), mon_nam(mon));
+    if (obj->oclass == COIN_CLASS) {
+        /* if given to a shopkeeper this should probably give credit */
+	mon->mgold += obj->quan;
+	obfree(obj, (struct obj *)0);
+        flags.botl = 1;
+        return 1;
+    }
     freeinv(obj);
     (void) mpickobj(mon, obj);
     m_dowear(mon, FALSE);

@@ -607,7 +607,7 @@ playersteal()
 	if(MON_AT(x, y)) {
 	    mtmp = m_at(x, y);
 
-	    if ((Role_if(PM_KNIGHT) && u.ualign.type == A_LAWFUL) || Role_if(PM_PALADIN)) {
+	    if ((Role_if(PM_KNIGHT) || Role_if(PM_PALADIN) && u.ualign.type == A_LAWFUL) && !mtmp->mtame) {
 			You_feel("like a common thief.");
 			adjalign(-sgn(u.ualign.type));
 	    }
@@ -616,6 +616,8 @@ playersteal()
 		(!mtmp->mcansee || !u.uundetected ||
 		 (mtmp->mux == u.ux && mtmp->muy == u.uy)))
 			verb = "rob";
+	    else if (mtmp->mtame)
+		    verb = "take";
 
 	    /* calculate chanch of sucess */
 	    /* Rogues are masters of thievary and nymphs are really good at seduction,
@@ -2340,6 +2342,7 @@ minimal_enlightenment()
 	static const char tabbed_deity_fmtstr[] = "%s\t%s";
 	static const char *fmtstr;
 	static const char *deity_fmtstr;
+	boolean stats = FALSE;
 
 	fmtstr = iflags.menu_tab_sep ? tabbed_fmtstr : untabbed_fmtstr;
 	deity_fmtstr = iflags.menu_tab_sep ?
@@ -2418,6 +2421,32 @@ minimal_enlightenment()
 	    (u.ualign.type   == A_LAWFUL)        ? " (c)" : "");
 	Sprintf(buf, fmtstr, "Lawful", buf2);
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, buf, FALSE);
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "", FALSE);
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, iflags.menu_headings, "Status", FALSE);
+	if (strcmp(hunstat(), "")) {
+	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, hunstat(), FALSE);
+	    stats = TRUE;
+	}
+	if (near_capacity() > UNENCUMBERED) {
+	    add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, encstat(), FALSE);
+	    stats = TRUE;
+	}
+	if (Confusion) { add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "Confused", FALSE); stats = TRUE; }
+	if (Sick) {
+	    if (u.usick_type & SICK_VOMITABLE) {
+		add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "Dying from food poisoning", FALSE);
+		stats = TRUE;
+	    }
+	    if (u.usick_type & SICK_NONVOMITABLE) {
+		add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "Dying from illness", FALSE);
+		stats = TRUE;
+	    }
+	}
+	if (Blind) { add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "Blind", FALSE); stats = TRUE; }
+	if (Stunned) { add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "Stunned", FALSE); stats = TRUE; }
+	if (Hallucination) { add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "Hallucinating", FALSE); stats = TRUE; }
+	if (Slimed) { add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "Slimed", FALSE); stats = TRUE; }
+	if (!stats) add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_NONE, "None", FALSE);
 
 	end_menu(tmpwin, "Base Attributes");
 	n = select_menu(tmpwin, PICK_NONE, &selected);

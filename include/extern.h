@@ -154,6 +154,8 @@ E char FDECL(borg_input, (void)); */
 
 /* ### botl.c ### */
 
+E const char *NDECL(encstat);
+E const char *NDECL(hunstat);
 E int FDECL(xlev_to_rank, (int));
 E int FDECL(title_to_mon, (const char *,int *,int *));
 E void NDECL(max_rank_sz);
@@ -418,6 +420,8 @@ E struct obj *FDECL(realloc_obj,
 		(struct obj *, int, genericptr_t, int, const char *));
 E char *FDECL(coyotename, (struct monst *,char *));
 E char *FDECL(rmname, (struct rm *));
+E char *FDECL(mon_wounds, (struct monst *));
+E void FDECL(print_mon_wounded, (struct monst *, int));
 
 /* ### do_wear.c ### */
 
@@ -1377,6 +1381,7 @@ E const char *FDECL(locomotion, (const struct permonst *,const char *));
 E const char *FDECL(stagger, (const struct permonst *,const char *));
 E const char *FDECL(on_fire, (struct permonst *,struct attack *));
 E const struct permonst *FDECL(raceptr, (struct monst *));
+E boolean FDECL(is_fleshy, (const struct permonst *));
 
 /* ### monmove.c ### */
 
@@ -1835,6 +1840,9 @@ E const char *FDECL(align_gname, (ALIGNTYP_P));
 E const char *FDECL(halu_gname, (ALIGNTYP_P));
 E const char *FDECL(align_gtitle, (ALIGNTYP_P));
 E void FDECL(altar_wrath, (int,int));
+#ifdef ASTR_ESC
+E int FDECL(invoke_amulet, (struct obj *));
+#endif
 
 
 /* ### priest.c ### */
@@ -2224,8 +2232,11 @@ E void FDECL(place_monster, (struct monst *,int,int));
 E void FDECL(adjtech, (int,int));
 E int NDECL(dotech);
 E void NDECL(docalm);
+E void FDECL(shield_block, (int));
+E boolean FDECL(shield_blockable, (struct monst *, struct attack *));
 E int FDECL(tech_inuse, (int));
 E void NDECL(tech_timeout);
+E void FDECL(extend_tech_time, (int, int));
 E boolean FDECL(tech_known, (SHORT_P));
 E void FDECL(learntech, (SHORT_P,long,int));
 E int FDECL(disarm_holdingtrap, (struct trap *));

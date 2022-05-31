@@ -793,6 +793,7 @@ int thrown;
 	char yourbuf[BUFSZ];
 	char unconventional[BUFSZ];	/* substituted for word "attack" in msg */
 	char saved_oname[BUFSZ];
+	int saved_mhp = mon->mhp;
 
 	if (thrown == 1) launcher = uwep;
 	else if (thrown == 2) launcher = uswapwep;
@@ -1521,12 +1522,16 @@ int thrown;
 	 * In this case, we do twice damage! Wow!
 	 *
 	 * Berserk special ability only does +4 damage. - SW
+	 * 5lo: Berserk time gets extended with every active hit
 	 */
 	/*Lycanthrope claws do +level bare hands dmg
                 (multi-hit, stun/freeze)..- WAC*/
 
 	if (tech_inuse(T_KIII)) tmp *= 2;
-	if (tech_inuse(T_BERSERK)) tmp += 4;
+	if (tech_inuse(T_BERSERK)) {
+		tmp += 4;
+		extend_tech_time(T_BERSERK, rnd(4));
+	}
 	if (tech_inuse(T_SOULEATER)) {
 		tmp += d((u.ulevel / 4), 8);
 		/* Unholy damage, not ignored from fire resistance */
@@ -1905,7 +1910,7 @@ int thrown;
 				canseemon(mon))
 			    pline("%s appears confused.", Monnam(mon));
 		}
-	} if (!destroyed) wounds_message(mon);
+	} if (!destroyed) print_mon_wounded(mon, saved_mhp);
 
 #ifdef SHOW_DMG
 	if (!destroyed) showdmg(tmp);

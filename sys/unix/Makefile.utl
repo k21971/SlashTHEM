@@ -91,7 +91,7 @@
 
 CFLAGS = -g3 -O0 -fcommon
 CFLAGS += -I../include -Wno-format-overflow
-CFLAGS += -DHACKDIR=\"/slashthem-0.9.6\"
+CFLAGS += -DHACKDIR=\"/slashthem-0.9.7\"
 CFLAGS += -DPUBLIC_SERVER
 LFLAGS = -g3
 

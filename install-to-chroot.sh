@@ -17,9 +17,8 @@ USRGRP="games:games"
 NH_GIT="/home/build/SlashTHEM"
 # HACKDIR from include/config.h; aka nethack subdir inside chroot
 # Make a new one each time save compat is broken
-NHSUBDIR="slashthem-0.9.6"
+NHSUBDIR="slashthem-0.9.7"
 #for combining xlogfile, etc on minor version bump
-#NH_LOG_SYMLINK_TARGET="/slashthem-0.9.6"
 # END OF CONFIG
 ##############################################################################
 
@@ -44,8 +43,8 @@ set -e
 umask 022
 
 echo "Creating inprogress and userdata directories"
-mkdir -p "$NAO_CHROOT/dgldir/inprogress-slth096"
-chown "$USRGRP" "$NAO_CHROOT/dgldir/inprogress-slth096"
+mkdir -p "$NAO_CHROOT/dgldir/inprogress-slth097"
+chown "$USRGRP" "$NAO_CHROOT/dgldir/inprogress-slth097"
 mkdir -p "$NAO_CHROOT/dgldir/extrainfo-slth"
 chown "$USRGRP" "$NAO_CHROOT/dgldir/extrainfo-slth"
 

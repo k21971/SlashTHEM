@@ -853,6 +853,7 @@ static struct inv_sub { short race_pm, item_otyp, subs_otyp; } inv_subs[] = {
     { PM_INCANTIFIER,	SPLINT_MAIL,		ROBE  },
     { PM_INCANTIFIER,	FOOD_RATION,	SCR_FOOD_DETECTION	},
     { PM_INCANTIFIER,	CRAM_RATION, 	SCR_FOOD_DETECTION	},
+    { PM_INCANTIFIER,	HACKER_S_FOOD,	SCR_FOOD_DETECTION	},
     { PM_INCANTIFIER,	POT_FRUIT_JUICE,SCR_FOOD_DETECTION	},
     { PM_INCANTIFIER,	BANANA,		SCR_FOOD_DETECTION	},
     { PM_INCANTIFIER,	ORANGE,		SCR_FOOD_DETECTION	},
@@ -1317,6 +1318,7 @@ static const struct def_skill Skill_War[] = {
     { P_JAVELIN, P_BASIC },       { P_CLUB, P_BASIC },
     { P_LONG_SWORD, P_EXPERT },    { P_SABER, P_BASIC },
     { P_MACE, P_SKILLED }, { P_BROAD_SWORD, P_EXPERT },
+    { P_TWO_HANDED_SWORD, P_EXPERT },
     { P_CROSSBOW, P_EXPERT },
     /* Warriors avoid magic */
     { P_DIVINATION_SPELL, P_BASIC },

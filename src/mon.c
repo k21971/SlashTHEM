@@ -484,6 +484,9 @@ register struct monst *mtmp;
 	}
 	/* All special cases should precede the G_NOCORPSE check */
 
+	/* One example of this: heisenbugs (hah!) */
+	if (!obj) return obj;
+
 	/* if polymorph or undead turning has killed this monster,
 	   prevent the same attack beam from hitting its corpse */
 	if (flags.bypasses) bypass_obj(obj);
@@ -1088,6 +1091,10 @@ register struct obj * otmp;
 {
 	int poly, grow, heal, mstone;
 	struct permonst *ptr;
+
+	/* failsafe */
+	if (evades_destruction(otmp)) return 0;
+
 	if (mtmp->mhp < mtmp->mhpmax) {
 	    mtmp->mhp += objects[otmp->otyp].oc_weight;
 	    if (mtmp->mhp > mtmp->mhpmax) mtmp->mhp = mtmp->mhpmax;
@@ -1102,6 +1109,10 @@ register struct obj * otmp;
 	    grow = mlevelgain(otmp);
 	    heal = mhealup(otmp);
 	    mstone = mstoning(otmp);
+	    if (otmp->owornmask) {
+		remove_worn_item(otmp, FALSE);
+	    }
+	    obj_extract_self(otmp);
 	    delobj(otmp);
 	    ptr = mtmp->data;
 	    if (poly) {
